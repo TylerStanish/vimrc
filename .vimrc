@@ -2,26 +2,41 @@ set nocompatible              " be iMproved, required
 set ruler
 filetype off                  " required
 
+" --- EXPERIMENTAL STUFF HERE
+nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
+au VimEnter *  NERDTree
+" --- DONE WITH EXPERIMENTAL STUFF
+
 "set statusline+=%F
 "set laststatus=2
 
 "set path+=**
-"set hlsearch
+set hlsearch
 "set wildmenu
 syntax on
 set relativenumber
 set number
+
+call plug#begin()
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'chemzqm/vim-jsx-improve'
+Plug 'sickill/vim-monokai'
+"Plug 'jiangmiao/auto-pairs'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'alvan/vim-closetag'
+call plug#end()
+let g:closetag_shortcut = '>'
 
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
-call plug#begin()
-Plug 'altercation/vim-colors-solarized'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
-call plug#end()
+set autoindent
+set smartindent
+
 
 set background=light
 let g:solarized_contrast = "high"
@@ -29,8 +44,10 @@ let g:solarized_visibility = "high"
 let g:NERDTreeNodeDelimiter = "\u00a0"
 colorscheme solarized
 
-nnoremap , gT
-nnoremap . gt
+nnoremap _ gT
+nnoremap + gt
+"inoremap {<CR>  {<CR><BS>}<Esc>O
+"inoremap ( ()<Esc>i
 
 let i = 1
 while i <= 9
