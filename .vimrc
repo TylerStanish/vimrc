@@ -1,6 +1,9 @@
 set nocompatible              " be iMproved, required
 set ruler
+set autoread
 filetype off                  " required
+"set clipboard=unnamedplus
+set backspace=indent,eol,start
 
 " --- EXPERIMENTAL STUFF HERE
 nnoremap <C-W>s Hmx`` \|:split<CR>`xzt``
@@ -24,15 +27,22 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'chemzqm/vim-jsx-improve'
 Plug 'sickill/vim-monokai'
 "Plug 'jiangmiao/auto-pairs'
-Plug 'Vimjas/vim-python-pep8-indent'
+""Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'alvan/vim-closetag'
+"Plug 'vim-syntastic/syntastic'
+"Plug 'python-mode/python-mode'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 let g:closetag_shortcut = '>'
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.js,*.jsx,*.tsx"
+let g:airline#extensions#tabline#enabled = 1
 
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
+autocmd Filetype haskell setlocal ts=2 sw=2 expandtab
 
 set autoindent
 set smartindent
@@ -46,6 +56,7 @@ colorscheme solarized
 
 nnoremap _ gT
 nnoremap + gt
+nnoremap <leader>b :ls<CR>:b 
 "inoremap {<CR>  {<CR><BS>}<Esc>O
 "inoremap ( ()<Esc>i
 
@@ -81,6 +92,5 @@ function! WindowNumber()
     return str
 endfunction
 
-set laststatus=2
 "append  %#StatusHostname#%{hostname()
-set statusline=%#StatusLine#%F%h%m%r\ %h%w%y\ col:%c\ lin:%l\,%L\ buf:%n\ win:%{WindowNumber()}\ reg:%{v:register}\}
+"set statusline=%#StatusLine#%F%h%m%r\ %h%w%y\ col:%c\ lin:%l\,%L\ buf:%n\ win:%{WindowNumber()}\ reg:%{v:register}\}
